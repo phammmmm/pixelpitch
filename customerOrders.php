@@ -13,17 +13,21 @@ $result=$db_handle->runQuery($sql);
 <table class="tbl-cart" cellpadding="10" cellspacing="1">
 			<tbody>
 				<tr>
-					<th style="text-align:left;">Order Date</th>
-					<th style="text-align:right;" width="10%">Order Amount</th>
+          <th>Order ID</th>
+          <th>Order Amount</th>
+					<th>Order Date</th>
 				</tr>
 <?php
-foreach($result as $order){
-  ?>
-  <tr>
-    <td><?php echo $order['order_date'];?></td>
-    <td><?php echo $order['order_amount'];?></td>
-  </tr>
-  <?php
+if($db_handle->numRows($sql)>0){
+  foreach($result as $order){
+    ?>
+    <tr>
+      <td><?php echo $order['order_no'];?></td>
+      <td>$<?php echo $order['order_amount'];?></td>
+      <td><?php echo $order['order_date'];?></td>
+    </tr>
+    <?php
+  }
 }
 ?>
 <?php require 'footer.php'; ?>

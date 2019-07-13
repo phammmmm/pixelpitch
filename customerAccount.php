@@ -39,15 +39,7 @@ $db_handle = new DBController();
     if(empty(trim($_POST["email"]))){
         $email_err = "Please enter an email.";
     } else{
-        // Prepare a select statement
-
-        $sql = "SELECT id FROM customers WHERE email = '".trim($_POST["email"])."'";
-        echo $db_handle->numRows($sql);
-        if($db_handle->numRows($sql)>0){
-          $username_err = "This email is already taken.";
-        } else{
-          $email = trim($_POST["email"]);   
-        }
+        $email = trim($_POST["email"]);   
     }
     // Check input errors before inserting in database
     if(empty($email_err) && empty($name_err)){

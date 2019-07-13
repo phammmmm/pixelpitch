@@ -52,11 +52,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <table class="tbl-cart" cellpadding="10" cellspacing="1">
 			<tbody>
 				<tr>
-					<th style="text-align:left;">Name</th>
-					<th style="text-align:left;">Category</th>
-					<th style="text-align:right;" width="5%">Quantity</th>
-					<th style="text-align:right;" width="10%">Unit Price</th>
-					<th style="text-align:right;" width="10%">Price</th>
+					<th>Name</th>
+					<th>Category</th>
+					<th>Quantity</th>
+					<th>Unit Price</th>
+					<th>Price</th>
 				</tr>
 				<?php
 				foreach ($_SESSION["cart_item"] as $item) {
@@ -65,9 +65,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 					<tr>
 						<td><img src="<?php echo $item["image"]; ?>" class="cart-item-image" /><?php echo $item["name"]; ?></td>
 						<td><?php echo $item["category"]; ?></td>
-						<td style="text-align:right;"><?php echo $item["quantity"]; ?></td>
-						<td style="text-align:right;"><?php echo "$ " . $item["price"]; ?></td>
-						<td style="text-align:right;"><?php echo "$ " . number_format($item_price, 2); ?></td>
+						<td ><?php echo $item["quantity"]; ?></td>
+						<td ><?php echo "$ " . $item["price"]; ?></td>
+						<td ><?php echo "$ " . number_format($item_price, 2); ?></td>
 					</tr>
 					<?php
 					$total_quantity += $item["quantity"];
@@ -76,9 +76,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 				?>
 
 				<tr>
-					<td colspan="2" align="right">Total:</td>
-					<td align="right"><?php echo $total_quantity; ?></td>
-					<td align="right" colspan="2"><strong><?php echo "$ " . number_format($total_price, 2); ?></strong></td>
+					<td colspan="2">Total:</td>
+					<td ><?php echo $total_quantity; ?></td>
+					<td colspan="2"><strong><?php echo "$ " . number_format($total_price, 2); ?></strong></td>
 					<td></td>
 				</tr>
 			</tbody>
