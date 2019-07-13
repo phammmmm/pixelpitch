@@ -25,11 +25,11 @@ if(!empty($_GET["action"])) {
 						}
 					} else {
 						$_SESSION["cart_item"] = $_SESSION["cart_item"]+$itemArray;
-						print("Item added to cart");
+						header("location: cart.php");
 					}
 				} else {
 					$_SESSION["cart_item"] = $itemArray;
-					print("Item added to cart");
+					header("location: cart.php");
 				}
 			}
 		break;
@@ -87,8 +87,20 @@ if(!empty($_GET["action"])) {
 				<div class="product-title"><?php echo $product_array[$key]["product_title"]; ?></div>
 				<div class="product-price"><?php echo "$".$product_array[$key]["product_price"]; ?></div>
 				<div class="cart-action">
-					<input type="number" class="product-quantity" name="quantity" value="1" min="1" max="100" />
-					<input type="submit" value="Add to Cart" class="btnAddAction" /></div>
+					<?php 
+						if($product_array[$key]["product_quantity"]>0){
+							?>
+							<input type="number" class="product-quantity" name="quantity" value="1" min="1" max="<?php echo $product_array[$key]["product_quantity"];?>" />
+							<input type="submit" value="Add to Cart" class="btnAddAction" />
+							<?php
+						}else{
+							?>
+							<input type="button" value="Out of Stock" class="btnAddAction" />
+							<?php
+							
+						}
+							?>
+				</div>
 				</div>
 			</form>
 			<button class="quick_look" data-id="<?php echo $product_array[$key]["product_id"];  ?>">View Details</button>

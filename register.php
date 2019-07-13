@@ -4,12 +4,51 @@
 	$db_handle = new DBController();
 
 	// Define variables and initialize with empty values
-	$name = $email = $password = $confirm_password = "";
-	$name_err =$email_err = $password_err = $confirm_password_err = "";
+	$firstName = $lastName = $contact = $email = $address = $username = $password = $confirm_password = "";
+	$firstName_err = $lastName_err = $contact_err = $email_err = $address_err = $username_err = $password_err = $confirm_password_err = "";
 	
 	// Processing form data when form is submitted
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
-			$name = trim($_POST["name"]);
+			// Validate firstName
+			if(empty(trim($_POST["firstName"]))){
+				$firstName_err = "Please enter an firstName.";
+			} else{
+				$firstName = trim($_POST["firstName"]);
+			}
+			// Validate lastName
+			if(empty(trim($_POST["lastName"]))){
+				$lastName_err = "Please enter an lastName.";
+			} else{
+				$lastName = trim($_POST["lastName"]);
+			}
+			// Validate contact
+			if(empty(trim($_POST["contact"]))){
+				$contact_err = "Please enter an contact.";
+			} else{
+				$contact = trim($_POST["contact"]);
+			}
+			// Validate address
+			if(empty(trim($_POST["address"]))){
+				$address_err = "Please enter an address.";
+			} else{
+				$address = trim($_POST["address"]);
+			}
+
+
+			// Validate username
+			if(empty(trim($_POST["username"]))){
+					$username_err = "Please enter an username.";
+			} else{
+					// Prepare a select statement
+
+					$sql = "SELECT id FROM customers WHERE username = '".trim($_POST["username"])."'";
+					echo $db_handle->numRows($sql);
+					if($db_handle->numRows($sql)>0){
+						$username_err = "This username is already taken.";
+					} else{
+						$username = trim($_POST["username"]);   
+					}
+			}
 			// Validate email
 			if(empty(trim($_POST["email"]))){
 					$email_err = "Please enter an email.";
@@ -45,11 +84,10 @@
 			}
 			
 			// Check input errors before inserting in database
-			if(empty($email_err) && empty($password_err) && empty($confirm_password_err)){
+			if(empty($firstName_err) && empty($lastName_err) && empty($contact_err) && empty($email_err) && empty($address_err) && empty($username_err) && empty($password_err) && empty($confirm_password_err)){
 					$hashed_password = password_hash($password, PASSWORD_DEFAULT);
 					// Prepare an insert statement
-					$sql = "INSERT INTO customers (name, email, password) VALUES ('".$name."','".$email."','".$hashed_password."')";
-					echo $sql;
+					$sql = "INSERT INTO customers (firstName, lastName, contact , email, address, username, password) VALUES ('".$firstName."','".$lastName."','".$contact."','".$email."','".$address."','".$username."','".$hashed_password."')";
 
 					// Attempt to execute the prepared statement
 					if($db_handle->executeUpdate($sql)){
@@ -70,15 +108,35 @@
       <p>Please fill this form to register with us</p>
       <form action="register.php" method="post">
         <div class="form-group">
-            <label>Name:<sup>*</label>
-            <input type="text" name="name" class="form-control form-control-lg <?php echo (!empty($name_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $name; ?>">
-            <span class="invalid-feedback"><?php echo $name_err; ?></span>
+            <label>First Name:<sup>*</label>
+            <input type="text" name="firstName" class="form-control form-control-lg <?php echo (!empty($firstName_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $firstName; ?>">
+            <span class="invalid-feedback"><?php echo $firstName_err; ?></span>
+				</div> 
+				<div class="form-group">
+            <label>Last Name:<sup>*</label>
+            <input type="text" name="lastName" class="form-control form-control-lg <?php echo (!empty($lastName_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $lastName; ?>">
+            <span class="invalid-feedback"><?php echo $lastName_err; ?></span>
+				</div> 
+				<div class="form-group">
+            <label>Contact:<sup>*</label>
+            <input type="text" name="contact" class="form-control form-control-lg <?php echo (!empty($contact_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $contact; ?>">
+            <span class="invalid-feedback"><?php echo $contact_err; ?></span>
         </div> 
         <div class="form-group">
             <label>Email Address:<sup>*</sup></label>
             <input type="text" name="email" class="form-control form-control-lg <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $email; ?>">
             <span class="invalid-feedback"><?php echo $email_err; ?></span>
-        </div>    
+				</div>   
+				<div class="form-group">
+            <label>Address:<sup>*</label>
+            <input type="text" name="address" class="form-control form-control-lg <?php echo (!empty($address_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $address; ?>">
+            <span class="invalid-feedback"><?php echo $address_err; ?></span>
+				</div>  
+				<div class="form-group">
+            <label>Username:<sup>*</label>
+            <input type="text" name="username" class="form-control form-control-lg <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
+            <span class="invalid-feedback"><?php echo $username_err; ?></span>
+        </div>  
         <div class="form-group">
             <label>Password:<sup>*</sup></label>
             <input type="password" name="password" class="form-control form-control-lg <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">

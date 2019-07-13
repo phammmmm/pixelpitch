@@ -1,5 +1,4 @@
 <?php require_once 'config.php';?>
-<?php require_once 'session_helper.php';?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

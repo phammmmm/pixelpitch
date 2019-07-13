@@ -4,36 +4,64 @@
 require_once("dbcontroller.php");
 $db_handle = new DBController();
 
-// Define variables and initialize with empty values
-$name = $email = $password = $confirm_password = "";
-$name_err =$email_err = $password_err = $confirm_password_err = "";
+	// Define variables and initialize with empty values
+	$firstName = $lastName = $contact = $email = $address = "";
+	$firstName_err = $lastName_err = $contact_err = $email_err = $address_err = "";
 
 	// Processing form data when form is submitted
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
-    if(empty(trim($_POST["name"]))){
-        $name_err = "Please enter a name.";
+    // Validate firstName
+    if(empty(trim($_POST["firstName"]))){
+      $firstName_err = "Please enter an firstName.";
     } else{
-        // Prepare a update statement
-        $name = trim($_POST["name"]);
+      $firstName = trim($_POST["firstName"]);
+    }
+    // Validate lastName
+    if(empty(trim($_POST["lastName"]))){
+      $lastName_err = "Please enter an lastName.";
+    } else{
+      $lastName = trim($_POST["lastName"]);
+    }
+    // Validate contact
+    if(empty(trim($_POST["contact"]))){
+      $contact_err = "Please enter an contact.";
+    } else{
+      $contact = trim($_POST["contact"]);
+    }
+    // Validate address
+    if(empty(trim($_POST["address"]))){
+      $address_err = "Please enter an address.";
+    } else{
+      $address = trim($_POST["address"]);
     }
 
     // Validate email
     if(empty(trim($_POST["email"]))){
         $email_err = "Please enter an email.";
     } else{
-        // Prepare a update statement
-        $email = trim($_POST["email"]);
+        // Prepare a select statement
+
+        $sql = "SELECT id FROM customers WHERE email = '".trim($_POST["email"])."'";
+        echo $db_handle->numRows($sql);
+        if($db_handle->numRows($sql)>0){
+          $username_err = "This email is already taken.";
+        } else{
+          $email = trim($_POST["email"]);   
+        }
     }
     // Check input errors before inserting in database
     if(empty($email_err) && empty($name_err)){
-        $sql = "update customers set name='".$name."', email='".$email."' where id=".$_SESSION['customer_id'];
+        $sql = "update customers set firstName='".$firstName."', lastName='".$lastName."', contact='".$contact."', email='".$email."', address='".$address."' where id=".$_SESSION['customer_id'];
         $db_handle->executeUpdate($sql);
     }
   }else{
-    $query = "SELECT id, name,email  FROM customers where id=".$_SESSION['customer_id'];
+    $query = "SELECT id, firstName, lastName, contact, email, address, username, password  FROM customers where id=".$_SESSION['customer_id'];
     $customer = $db_handle->singleResult($query);
-    $name = $customer['name'];
+    $firstName = $customer['firstName'];
+    $lastName = $customer['lastName'];
+    $contact = $customer['contact'];
     $email = $customer['email'];
+    $address = $customer['address'];
   }
 
 ?>
@@ -46,16 +74,32 @@ $name_err =$email_err = $password_err = $confirm_password_err = "";
     <div class="card card-body bg-light mt-5">
       <h2>Manage My Account</h2>
       <form action="customerAccount.php" method="post">
-        <div class="form-group">
-            <label>Name:<sup>*</label>
-            <input type="text" name="name" class="form-control form-control-lg <?php echo (!empty($name_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $name; ?>" require>
-            <span class="invalid-feedback"><?php echo $name_err; ?></span>
+      <div class="form-group">
+            <label>First Name:<sup>*</label>
+            <input type="text" name="firstName" class="form-control form-control-lg <?php echo (!empty($firstName_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $firstName; ?>">
+            <span class="invalid-feedback"><?php echo $firstName_err; ?></span>
+				</div> 
+				<div class="form-group">
+            <label>Last Name:<sup>*</label>
+            <input type="text" name="lastName" class="form-control form-control-lg <?php echo (!empty($lastName_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $lastName; ?>">
+            <span class="invalid-feedback"><?php echo $lastName_err; ?></span>
+				</div> 
+				<div class="form-group">
+            <label>Contact:<sup>*</label>
+            <input type="text" name="contact" class="form-control form-control-lg <?php echo (!empty($contact_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $contact; ?>">
+            <span class="invalid-feedback"><?php echo $contact_err; ?></span>
         </div> 
         <div class="form-group">
             <label>Email Address:<sup>*</sup></label>
-            <input type="text" name="email" class="form-control form-control-lg <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $email; ?>" require>
+            <input type="text" name="email" class="form-control form-control-lg <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $email; ?>">
             <span class="invalid-feedback"><?php echo $email_err; ?></span>
-        </div>    
+				</div>   
+				<div class="form-group">
+            <label>Address:<sup>*</label>
+            <input type="text" name="address" class="form-control form-control-lg <?php echo (!empty($address_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $address; ?>">
+            <span class="invalid-feedback"><?php echo $address_err; ?></span>
+				</div>  
+		
         
         <div class="form-row">
           <div class="col">
