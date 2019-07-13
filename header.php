@@ -1,4 +1,8 @@
-<?php require_once 'config.php';?>
+<?php require_once 'config.php';
+if(!isset($_SESSION)){
+  session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
