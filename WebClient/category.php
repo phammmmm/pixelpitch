@@ -1,15 +1,14 @@
 <?php
-include 'dbcontroller.php';
-$db_handle = new DBController();
-$query = "select * from products where product_category_id = '". $_GET["cat_id"]."'";
+require_once("../Server/ProductController.php");
+$controller = new ProductController();
 
-$product_array = $db_handle->runQuery($query);
+$product_array = $controller->findProductsByCategory($_GET["cat_id"]);
 if (!empty($product_array)) { 
 	foreach($product_array as $key=>$value){
 ?>
 		<div class="product-item">
 			<form method="post" action="products.php?action=add&product_id=<?php echo $product_array[$key]["product_id"]; ?>">
-				<div class="product-image"><img src="<?php echo $product_array[$key]["product_image"]; ?>"></div>
+				<div class="product-image"><img src="<?php echo URLROOT."/../".$product_array[$key]["product_image"]; ?>"></div>
 				<div class="product-tile-footer">
 				<div class="product-title"><?php echo $product_array[$key]["product_title"]; ?></div>
 				<div class="product-price"><?php echo "$".$product_array[$key]["product_price"]; ?></div>

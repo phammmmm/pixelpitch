@@ -8,7 +8,7 @@ require_once("../Server/OrderController.php");
 $controller = new OrderController();
 $orders=$controller->getOrdersByCustomerId($_SESSION["customer_id"]);
 ?>
-<div class="txt-heading">Your Past Purchase</div>
+<div class="txt-heading">Your Past Orders</div>
 <table class="tbl-cart" cellpadding="10" cellspacing="1">
 			<tbody>
 				<tr>

@@ -83,7 +83,7 @@ if(!empty($_GET["action"])) {
 	?>
 		<div class="product-item">
 			<form method="post" action="products.php?action=add&product_id=<?php echo $product_array[$key]["product_id"]; ?>">
-				<div class="product-image"><img src="<?php echo $product_array[$key]["product_image"]; ?>"></div>
+				<div class="product-image"><img src="<?php echo URLROOT."/../".$product_array[$key]["product_image"]; ?>"></div>
 				<div class="product-tile-footer">
 				<div class="product-title"><?php echo $product_array[$key]["product_title"]; ?></div>
 				<div class="product-price"><?php echo "$".$product_array[$key]["product_price"]; ?></div>

@@ -13,6 +13,7 @@ if(!isset($_SESSION)){
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link href="css/style.css" rel="stylesheet">
+  <link href="css/adminStyle.css" rel="stylesheet">
   <title><?php echo SITENAME; ?></title>
 </head>
 <body>
