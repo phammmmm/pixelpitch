@@ -27,6 +27,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 }
 
 ?>
+<div id="checkout">
 <h1>Checkout</h1>
 <div class="txt-heading">Shipping Information</div>
 <p> Name: <?php echo $_SESSION["customer_firstName"]." ".$_SESSION["customer_lastName"]; ?></p>
@@ -83,5 +84,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		<div class="no-records">No Item</div>
 	<?php
   }
-  ?>
+	?>
+</div>
 <?php require 'footer.php'; ?>
