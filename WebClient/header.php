@@ -18,3 +18,4 @@ if(!isset($_SESSION)){
 </head>
 <body>
   <?php require 'navbar.php'; ?>
+  <div class="container">
