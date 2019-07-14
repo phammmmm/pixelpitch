@@ -34,14 +34,14 @@ CREATE TABLE `admins`
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `job_tittle` varchar(255) NOT NULL
+  `job_title` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `admins`
 --
 
-INSERT INTO `admins` (`adminid`,`username`, `password`, `email`, `job_tittle`) VALUES
+INSERT INTO `admins` (`adminid`,`username`, `password`, `email`, `job_title`) VALUES
 (10, 'staff1', 'staff1', 'staff1@pixelpitch.com', 'admin'),
 (11, 'staff2', 'staff2', 'staff2@pixelpitch.com', 'admin'),
 (12, 'staff3', 'staff3', 'staff3@pixelpitch.com', 'admin');
@@ -54,7 +54,7 @@ INSERT INTO `admins` (`adminid`,`username`, `password`, `email`, `job_tittle`) V
 
 CREATE TABLE `categories`
 (
-  `cat_id` int(11) NOT NULL,
+  `cat_id` int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `cat_title` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -93,7 +93,6 @@ CREATE TABLE `customers`
 --
 -- Table structure for table `orders`
 --
-DROP TABLE orders;
 CREATE TABLE `orders`
 (
   `order_no` int (11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -129,7 +128,6 @@ CREATE TABLE `products`
 --
 -- Dumping data for table `products`
 --
-Delete from products;
 INSERT INTO `products` (`product_id`,`product_title`, `product_category_id`, `product_price`, `product_quantity`, `product_description`, `product_image`) VALUES
 (15, 'Black Athletic Tee', 31, 34, 100, 'The Athletic Tee delivers exceptional comfort and breathability through its polyester and spandex blend. Come with Black Color', 'product_img/athletic_black.jpg'),
 (16, 'Blue Athletic Tee', 31, 34, 100, 'The Athletic Tee delivers exceptional comfort and breathability through its polyester and spandex blend.  Come with Blue Color', 'product_img/athletic_blue.jpg'),
