@@ -56,7 +56,7 @@ if (!empty($_GET["action"])) {
 					$item_price = $item["quantity"] * $item["price"];
 					?>
 					<tr>
-						<td><img src="<?php echo $item["image"]; ?>" class="cart-item-image" /><?php echo $item["name"]; ?></td>
+						<td><img src="<?php echo URLROOT."/../".$item["image"]; ?>" class="cart-item-image" /><?php echo $item["name"]; ?></td>
 						<td><?php echo $item["category"]; ?></td>
 						<td><?php echo $item["quantity"]; ?></td>
 						<td><?php echo "$ " . $item["price"]; ?></td>
