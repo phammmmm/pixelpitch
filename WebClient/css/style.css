@@ -783,3 +783,24 @@ padding-left: 3px;
   background-color: #4CAF50;
   color: white;
 }
+#btnEmpty {
+	background-color: #ffffff;
+	border: #d00000 1px solid;
+	padding: 5px 10px;
+	color: #d00000;
+	float: right;
+	text-decoration: none;
+	border-radius: 3px;
+	margin: 10px 0px;
+}
+
+.btnCheck {
+	background-color: #ffffff;
+	border: rgb(24, 24, 99) 1px solid;
+	padding: 5px 10px;
+	color: rgb(24, 24, 99);
+	float: right;
+	text-decoration: none;
+	border-radius: 3px;
+	margin: 10px 0px;
+}
