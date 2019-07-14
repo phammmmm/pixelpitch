@@ -48,7 +48,9 @@ if(!empty($_GET["action"])) {
 			</form>
 		</div>
 		<div class="txt-heading">Categories</div>
-		<div class="categories">
+		<div id="vertical-menu">
+		<ul class="nav nav-pills flex-column">
+  	
 				<?php
 				require_once("dbcontroller.php");
 				$db_handle = new DBController();
@@ -57,16 +59,17 @@ if(!empty($_GET["action"])) {
 				if (! empty($catArray)) {
 					foreach($catArray as $key=>$value) {
 				?>  
-							<div>
-								<button class="cat_button" data-id="<?php echo $catArray[$key]["cat_id"];  ?>">
-							<?php echo $catArray[$key]["cat_title"]; ?>
-								</button>
-							</div>
+						<li class="nav-item">
+							<a class="nav-link cat_button" data-id="<?php echo $catArray[$key]["cat_id"];  ?>">
+								<?php echo $catArray[$key]["cat_title"]; ?>
+							</a>
+						</li>
 							
 				<?php
 					}
 				}
 				?>
+				</ul>
 		</div>
 	</div>
 	<div id="product-list">

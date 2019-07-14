@@ -130,10 +130,7 @@ CREATE TABLE `products`
 -- Dumping data for table `products`
 --
 Delete from products;
-INSERT INTO `products` (`
-product_id`,
-`product_title
-`, `product_category_id`, `product_price`, `product_quantity`, `product_description`, `product_image`) VALUES
+INSERT INTO `products` (`product_id`,`product_title`, `product_category_id`, `product_price`, `product_quantity`, `product_description`, `product_image`) VALUES
 (15, 'Black Athletic Tee', 31, 34, 100, 'The Athletic Tee delivers exceptional comfort and breathability through its polyester and spandex blend. Come with Black Color', 'product_img/athletic_black.jpg'),
 (16, 'Blue Athletic Tee', 31, 34, 100, 'The Athletic Tee delivers exceptional comfort and breathability through its polyester and spandex blend.  Come with Blue Color', 'product_img/athletic_blue.jpg'),
 (17, 'Grey Athletic Tee', 31, 34, 100, 'The Athletic Tee delivers exceptional comfort and breathability through its polyester and spandex blend. Come with Grey Color', 'product_img/athletic_grey.jpg'),

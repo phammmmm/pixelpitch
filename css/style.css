@@ -173,7 +173,7 @@ div.product-info .selected {
 }
 
 .product-title {
-	font-size: 1.5em;
+	font-size: 1.2em;
 }
 
 .product-category {
@@ -207,4 +207,25 @@ button.btn-info {
 .ui-widget-header {
 	border: none !important;
 	background: none !important;
+}
+
+#vertical-menu {
+  width: 100%;
+}
+
+#vertical-menu ul li a{
+  background-color: #eee;
+  color: black;
+  display: block;
+  padding: 12px;
+  text-decoration: none;
+}
+
+#vertical-menu ul li a:hover {
+  background-color: #ccc;
+}
+
+#vertical-menu ul li a.active {
+  background-color: #4CAF50;
+  color: white;
 }
