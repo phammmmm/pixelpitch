@@ -69,9 +69,7 @@ body {
 	font-weight: normal;
 }
 
-.product-title {
-	margin-bottom: 20px;
-}
+
 
 .product-price {
 	float:left;
@@ -151,7 +149,8 @@ div.product-info .selected {
 }
 
 .product-title {
-	font-size: 1.5em;
+	margin-bottom: 20px;
+	font-size: 1.2em;
 }
 
 .product-category {
