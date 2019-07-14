@@ -1,4 +1,4 @@
-</div>
+
 <footer id="gtco-footer" class="gtco-section">
     <div class="gtco-container">
         <div class="row row-pb-md">
