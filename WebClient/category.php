@@ -1,4 +1,5 @@
 <?php
+require_once 'config.php';
 require_once("../Server/ProductController.php");
 $controller = new ProductController();
 
