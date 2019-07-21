@@ -18,7 +18,7 @@ body {
 
 .navbar-collapse.collapse.in {
 	display: block!important;
-  }
+	}
 
 #shopping-cart table {
 	width: 100%;
@@ -37,7 +37,9 @@ body {
 	margin-bottom: 1rem;
 	font-weight: bold;
 }
-
+#product-list {
+	margin-bottom: 2rem;
+}
 .product-item {
 	float: left;
 	background: #ffffff;
@@ -46,19 +48,53 @@ body {
 }
 
 .product-image {
-	height: 200px;
-	width: 250px;
+	height: 144px;
+	width: 144px;
 	background-color: #FFF;
 }
-
-.clear-float {
-	clear: both;
+.product-title {
+	padding: 0.3rem;
+	margin-bottom: 0.5rem;
+	font-size: 0.9rem;
+	font-weight: bold;
+}
+.product-price {
+	float:left;
+	font-weight: bold;
+	padding: 0.2rem;
+	margin: 0.2rem;
+	font-size: 0.8rem;
+}
+.cart-action {
+	float: right;
 }
 
-.demo-input-box {
-	border-radius: 2px;
-	border: #CCC 1px solid;
-	padding: 2px 1px;
+.product-quantity {
+    padding: 0.1rem 0.2rem;
+    border-radius: 3px;
+		border: #E0E0E0 1px solid;
+		font-size: 0.8rem;
+}
+
+.product-tile-footer {
+    padding: 0.3rem;
+    overflow: auto;
+}
+.btnAddAction {
+	padding: 0.1rem;
+	margin: 0.2rem 0.2rem 0 0;
+	padding: 0.1rem 0.2rem;
+	border: #5f6366 1px solid;
+	border-radius: 3px;
+	color: rgb(68, 63, 63);
+}
+.quick_look {
+	padding: 0.1rem;
+	margin: 0.2rem 0.2rem 0 0;
+	padding: 0.1rem 0.2rem;
+	border: #5f6366 1px solid;
+	border-radius: 3px;
+	color: rgb(68, 63, 63);
 }
 
 .tbl-cart {
@@ -69,26 +105,10 @@ body {
 	font-weight: normal;
 }
 
+#gtco-foot
 
 
-.product-price {
-	float:left;
-}
 
-.cart-action {
-	float: right;
-}
-
-.product-quantity {
-    padding: 5px 10px;
-    border-radius: 3px;
-    border: #E0E0E0 1px solid;
-}
-
-.product-tile-footer {
-    padding: 15px 15px 0px 15px;
-    overflow: auto;
-}
 
 .cart-item-image {
 	width: 30px;
@@ -123,7 +143,6 @@ div.image {
 }
 
 
-
 .product-info {
 	float: left;
 	margin-left: 20px;
@@ -148,10 +167,7 @@ div.product-info .selected {
 	text-shadow: 0 0 5px #ffb900;
 }
 
-.product-title {
-	margin-bottom: 20px;
-	font-size: 1.2em;
-}
+
 
 .product-category {
 	margin: 20px 0px;
@@ -175,7 +191,7 @@ button.btn-info {
 
 #product-grid {
 	display: grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 1fr 3fr;
   grid-gap: 1rem;
   align-content: center;
   margin-bottom: 1.2rem;
@@ -485,7 +501,8 @@ button.btn-info {
 
 #gtco-footer {
   background: #343A40;
-  padding: 7em 0 0 0 !important;
+	padding: 7em 0 0 0 !important;
+	margin-top: 4rem;
   margin-bottom: 0 !important;
   width: 100%;
 	float: left;
@@ -765,7 +782,7 @@ padding-left: 3px;
 }
 
 #vertical-menu {
-  width: 100%;
+  width: 80%;
 }
 
 #vertical-menu ul li a{

@@ -10,4 +10,15 @@ class ProductController extends DBController{
 		$query = "select * from products where product_category_id =". $categoryId;
 		return $this->runQuery($query);
 	}
+	function searchProducts($keyword){
+		$query="SELECT * FROM products ORDER BY product_id ASC";
+		if(!empty($keyword)) {
+			$query = "SELECT * FROM `products` WHERE product_description LIKE '%".$keyword."%' OR product_title LIKE '%".$keyword."%'";
+		}
+		return $this->runQuery($query);
+	}
+	function findCategories(){
+		$query = "select cat_id, cat_title from categories";
+		return $this->runQuery($query);
+	}
 }

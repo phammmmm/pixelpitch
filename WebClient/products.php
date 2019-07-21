@@ -62,7 +62,6 @@ if(!empty($_GET["action"])) {
 								<?php echo $catArray[$key]["cat_title"]; ?>
 							</a>
 						</li>
-							
 				<?php
 					}
 				}
@@ -72,27 +71,26 @@ if(!empty($_GET["action"])) {
 	</div>
 	<div id="product-list">
 	<?php
-	$query="SELECT * FROM products ORDER BY product_id ASC";
+	$keyword="";
 	if(!empty($_POST["keyword"])) {
 		$keyword = $_POST['keyword'];
-		$query = "SELECT * FROM `products` WHERE product_description LIKE '%".$keyword."%' OR product_title LIKE '%".$keyword."%'";
 	}
-	$product_array = $controller->runQuery($query);
+	$product_array = $controller->searchProducts($keyword);
 	if (!empty($product_array)) { 
 		foreach($product_array as $key=>$value){
 	?>
 		<div class="product-item">
 			<form method="post" action="products.php?action=add&product_id=<?php echo $product_array[$key]["product_id"]; ?>">
 				<div class="product-image"><img src="<?php echo URLROOT."/../".$product_array[$key]["product_image"]; ?>"></div>
-				<div class="product-tile-footer">
 				<div class="product-title"><?php echo $product_array[$key]["product_title"]; ?></div>
+				<div class="product-tile-footer">
 				<div class="product-price"><?php echo "$".$product_array[$key]["product_price"]; ?></div>
 				<div class="cart-action">
 					<?php 
 						if($product_array[$key]["product_quantity"]>0){
 							?>
 							<input type="number" class="product-quantity" name="quantity" value="1" min="1" max="<?php echo $product_array[$key]["product_quantity"];?>" />
-							<input type="submit" value="Add to Cart" class="btnAddAction" />
+							<input type="submit" value="Add to cart" class="btnAddAction" />
 							<?php
 						}else{
 							?>
@@ -104,7 +102,7 @@ if(!empty($_GET["action"])) {
 				</div>
 				</div>
 			</form>
-			<button class="quick_look" data-id="<?php echo $product_array[$key]["product_id"];  ?>">View Details</button>
+			<button class="quick_look" data-id="<?php echo $product_array[$key]["product_id"];  ?>">Quick Look</button>
 		</div>
 
 	<?php

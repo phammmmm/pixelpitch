@@ -18,7 +18,7 @@ if (!empty($product_array)) {
 						if($product_array[$key]["product_quantity"]>0){
 							?>
 							<input type="number" class="product-quantity" name="quantity" value="1" min="1" max="<?php echo $product_array[$key]["product_quantity"];?>" />
-							<input type="submit" value="Add to Cart" class="btnAddAction" />
+							<input type="submit" value="Add" class="btnAddAction" />
 							<?php
 						}else{
 							?>
@@ -30,7 +30,7 @@ if (!empty($product_array)) {
 				</div>
 				</div>
 			</form>
-			<button class="quick_look" data-id="<?php echo $product_array[$key]["product_id"];  ?>">View Details</button>
+			<button class="quick_look" data-id="<?php echo $product_array[$key]["product_id"];  ?>">Quick Look</button>
 		</div>
 <?php
   }

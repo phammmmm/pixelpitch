@@ -20,6 +20,12 @@ class CustomerController extends DBController{
 		return $this->executeUpdate($sql);
   }
   function updateCustomerDetails($firstName,$lastName,$contact,$email,$address,$customerId){
-    $sql = "update customers set firstName='".$firstName."', lastName='".$lastName."', contact='".$contact."', email='".$email."', address='".$address."' where id=".$customerId;
-  }
+		$sql = "update customers set firstName='".$firstName."', lastName='".$lastName."', contact='".$contact."', email='".$email."', address='".$address."' where id=".$customerId;
+		return $this->executeUpdate($sql);
+	}
+	
+	function updateCustomerPassword($username,$password){
+		$sql = "UPDATE customers set password='".$password."' where username = '".$username."'";
+		return $this->executeUpdate($sql);
+	}
 }

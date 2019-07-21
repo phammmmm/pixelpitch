@@ -96,6 +96,9 @@ $controller = new CustomerController();
           <div class="col">
             <input type="submit" class="btn btn-success btn-block" value="Save">
           </div>
+          <div class="col">
+						<a href="customerPassword.php" class="btn btn-light btn-block">Change Password</a>
+					</div>
         </div>
       </form>
     </div>
