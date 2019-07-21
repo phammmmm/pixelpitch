@@ -485,7 +485,7 @@ button.btn-info {
 	}
 	
 	.gtco-staff .role, .gtco-item .role {
-		color: #bfbfbf;
+		color: #ffffff;
 		margin-bottom: 20px;
 		font-weight: normal;
 		display: block;
@@ -594,18 +594,18 @@ padding-left: 10px;
 
 .table_row > .table_small > .table_cell:nth-child(odd) {
 	display: none;
-	background: #bdbdbd;
-color: #e5e5e5;
-padding-left: 10px;
+	background: #ffffff;
+	color: #ffffff;
+	padding-left: 10px;
 	padding-top: 10px;
 	padding-bottom: 10px;
 }
 
 .table_row > .table_small > .table_cell {
-padding-left: 3px;
+	padding-left: 3px;
 	padding-top: 3px;
 	padding-bottom: 3px;
-	color: #5b5b5b;
+	color: #fff;
 	border-bottom: #fff 1px solid; 
 }
 
@@ -815,10 +815,11 @@ padding-left: 3px;
 .btnCheck {
 	background-color: #ffffff;
 	border: rgb(24, 24, 99) 1px solid;
-	padding: 5px 10px;
+	padding: 0.5rem;
 	color: rgb(24, 24, 99);
 	float: right;
 	text-decoration: none;
 	border-radius: 3px;
-	margin: 10px 0px;
+	margin: 1rem;
 }
+

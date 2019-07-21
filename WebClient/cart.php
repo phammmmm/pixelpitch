@@ -41,45 +41,85 @@ if (!empty($_GET["action"])) {
 		$total_quantity = 0;
 		$total_price = 0;
 		?>
-		<table class="tbl-cart" cellpadding="10" cellspacing="1">
-			<tbody>
-				<tr>
-					<th>Name</th>
-					<th>Category</th>
-					<th>Quantity</th>
-					<th>Unit Price</th>
-					<th>Price</th>
-					<th>Remove</th>
-				</tr>
+		<div class="table">
+			<div class="theader">
+				<div class="table_header">Name</div>
+				<div class="table_header">Category</div>
+				<div class="table_header">Quantity</div>
+				<div class="table_header">Unit Price</div>
+				<div class="table_header">Price</div>
+				<div class="table_header">Remove</div>
+			</div>	
+
 				<?php
 				foreach ($_SESSION["cart_item"] as $item) {
 					$item_price = $item["quantity"] * $item["price"];
 					?>
-					<tr>
-						<td><img src="<?php echo URLROOT."/../".$item["image"]; ?>" class="cart-item-image" /><?php echo $item["name"]; ?></td>
-						<td><?php echo $item["category"]; ?></td>
-						<td><?php echo $item["quantity"]; ?></td>
-						<td><?php echo "$ " . $item["price"]; ?></td>
-						<td><?php echo "$ " . number_format($item_price, 2); ?></td>
-						<td><a href="cart.php?action=remove&product_id=<?php echo $item["product_id"]; ?>" class="btnRemoveAction"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
-					</tr>
+					<div class='table_row'>
+					<div class='table_small'>
+						<div class='table_cell'>Name</div>
+						<div class='table_cell'><img src="<?php echo URLROOT."/../".$item["image"]; ?>" class="cart-item-image" /><br><?php echo $item["name"]; ?>
+						</div>
+					</div>
+					<div class='table_small'>
+						<div class='table_cell'>Category</div>
+						<div class='table_cell'><?php echo $item["category"]; ?></div>
+					</div>
+					<div class='table_small'>
+						<div class='table_cell'>Quantity</div>
+						<div class='table_cell'><?php echo $item["quantity"]; ?></div>
+					</div>
+					<div class='table_small'>
+						<div class='table_cell'>Unit Price</div>
+						<div class='table_cell'><?php echo "$ " . $item["price"]; ?></div>
+					</div>
+					<div class='table_small'>
+						<div class='table_cell'>Price</div>
+						<div class='table_cell'><?php echo "$ " . number_format($item_price, 2); ?></div>
+					</div>
+					<div class='table_small'>
+						<div class='table_cell'>Remove</div>
+						<div class='table_cell'><a href="cart.php?action=remove&product_id=<?php echo $item["product_id"]; ?>" class="btnRemoveAction"><i class="fa fa-trash" aria-hidden="true"></i></a></div>
+					</div>
+					</div>
 					<?php
 					$total_quantity += $item["quantity"];
 					$total_price += ($item["price"] * $item["quantity"]);
 				}
 				?>
 
-				<tr>
-					<td colspan="2" >Total:</td>
-					<td><?php echo $total_quantity; ?></td>
-					<td colspan="2"><strong><?php echo "$ " . number_format($total_price, 2); ?></strong></td>
-					<td></td>
-				</tr>
-			</tbody>
-		</table>
+				<div class='table_row'>
 
-		<a id="btnCheckout" class="btnCheck" href="cart.php?action=checkout">Place Order</a>
-
+					<div class='table_small'>
+						<div class='table_cell'></div>
+						<div class='table_cell'>Total:</div>
+					</div>
+					<div class='table_small'>
+							<div class='table_cell'></div>
+							<div class='table_cell'></div>
+					</div>
+					<div class='table_small'>
+						<div class='table_cell'>Total Quantity</div>
+						<div class='table_cell'><?php echo $total_quantity; ?></div>
+					</div>
+					<div class='table_small'>
+							<div class='table_cell'></div>
+							<div class='table_cell'></div>
+					</div>
+					<div class='table_small'>
+						<div class='table_cell'>Total Price</div>	
+						<div class='table_cell'><strong><?php echo "$ " . number_format($total_price, 2); ?></strong></div>
+					</div>
+					<div class='table_small'>
+							<div class='table_cell'></div>
+							<div class='table_cell'></div>
+					</div>
+			</div>
+	
+			</div>
+		<div class="txt-heading">
+			<a id="btnCheckout" class="btnCheck" href="cart.php?action=checkout">Place Order</a>
+		</div>
 	<?php
 	} else {
 		?>

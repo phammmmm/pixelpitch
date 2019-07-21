@@ -26,30 +26,23 @@ if(!empty($orders)){
       <td>$<?php echo $order['order_amount'];?></td>
       <td><?php echo $order['order_date'];?></td>
       <td>
-      <table class="tbl-cart" cellpadding="10" cellspacing="1">
-				<tr>
-          <th>Product Title</th>
-          <th>Product Quantity</th>
-          <th>Product Price</th>
-				</tr>
+     
         <?php 
 
       $orderDetails=$controller->getOrderDetailsByOrderno($order['order_no']);
       foreach($orderDetails as $item){
-      ?><tr>
-        <td><?php echo $item['product_title'];?></td>
-        <td><?php echo $item['product_quantity'];?></td>
-        <td>$<?php echo $item['product_price'];?></td>
-      </tr>
+        echo $item['product_quantity']." ".$item['product_title'];?><br>
+        
+     
       <?php
       }
       ?>
-      </table>
-    
-    <?php
+      </td>
+      <?php
   }
   ?>
   </table>
+  <div class="txt-heading"> </div>
   <?php
 }
 ?>
