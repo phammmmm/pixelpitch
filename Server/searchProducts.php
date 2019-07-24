@@ -19,8 +19,9 @@ if (!empty($product_array)) {
 					<?php 
 						if($product_array[$key]["product_quantity"]>0){
 							?>
-							<input type="number" class="product-quantity" name="quantity" value="1" min="1" max="<?php echo $product_array[$key]["product_quantity"];?>" />
-							<input type="submit" value="Buy Now" class="btnAddAction" />
+							<input type="number" class="product-quantity" id="qty_<?php echo $product_array[$key]["product_id"]; ?>" name="quantity" value="1" min="1" max="<?php echo $product_array[$key]["product_quantity"];?>" />
+							<input type="button" value="Buy Now" class="btnAddAction" onClick = "cartAction('add','<?php echo $product_array[$key]["product_id"]; ?>')"/>
+			
 							<?php
 						}else{
 							?>

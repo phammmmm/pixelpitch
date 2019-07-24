@@ -1,6 +1,6 @@
 <?php
-if(!empty($_GET["keyword"])) {
-  require_once '../Server/ProductController.php';
+if(!empty($_GET["product_id"])) {
+  require_once 'ProductController.php';
   $db_handle = new ProductController();
   $product = $db_handle->getProductById($_GET["product_id"]);
   if (! empty($product)) {
